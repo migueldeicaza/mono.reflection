@@ -27,8 +27,8 @@
 //
 
 using System;
-using System.Reflection;
-using System.Reflection.Emit;
+using IKVM.Reflection;
+using IKVM.Reflection.Emit;
 
 namespace Mono.Reflection {
 

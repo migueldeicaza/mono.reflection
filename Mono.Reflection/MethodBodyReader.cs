@@ -26,10 +26,10 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-using System;
+//using System;
 using System.Collections.Generic;
-using System.Reflection;
-using System.Reflection.Emit;
+using IKVM.Reflection;
+using IKVM.Reflection.Emit;
 
 namespace Mono.Reflection {
 
@@ -44,7 +44,7 @@ namespace Mono.Reflection {
 			two_bytes_opcodes = new OpCode [0x1f];
 
 			var fields = typeof (OpCodes).GetFields (
-				BindingFlags.Public | BindingFlags.Static);
+				System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static);
 
 			foreach (var field in fields) {
 				var opcode = (OpCode) field.GetValue (null);
@@ -74,11 +74,11 @@ namespace Mono.Reflection {
 
 			this.body = method.GetMethodBody ();
 			if (this.body == null)
-				throw new ArgumentException ("Method has no body");
+				throw new System.ArgumentException ("Method has no body");
 
 			var bytes = body.GetILAsByteArray ();
 			if (bytes == null)
-				throw new ArgumentException ("Can not get the body of the method");
+				throw new System.ArgumentException ("Can not get the body of the method");
 
 			if (!(method is ConstructorInfo))
 				method_arguments = method.GetGenericArguments ();
@@ -171,7 +171,7 @@ namespace Mono.Reflection {
 				instruction.Operand = GetVariable (instruction, il.ReadInt16 ());
 				break;
 			default:
-				throw new NotSupportedException ();
+				throw new System.NotSupportedException ();
 			}
 		}
 
