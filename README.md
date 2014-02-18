@@ -4,6 +4,9 @@ Mono.Reflection is an helper library to complement the System.Reflection and Sys
 
 It works on both Mono >= 2.8 and .net >= 4.0.
 
+This has been updated to use IKVM's Reflection API, instead of the .NET Reflection API, which is
+great when you are using a different mscorlib
+
 ## API
 
 ***
